@@ -2,14 +2,22 @@
 @import 'mixins';
 
 $trans: all .2s ease-in-out;
+$orange: #FF8730;
+$philosopher: 'Philosopher', sans-serif;
 
 // @include font-face('fontName', '../fonts/fontPath/fontName', normal); 
+
+body {
+	color: #44342B;
+	font-size: 16px;
+	font-family: 'Inter', sans-serif;
+}
 
 .icon {
 	display: inline-block;
 	width: 2em;
 	height: 2em;
-	font-size: 30px;
+	font-size: inherit;
 }
 
 * {
@@ -22,6 +30,17 @@ h3,
 p,
 ul {
 	margin-top: 0;
+}
+
+h1 {
+	font-size: 40px;
+	font-family: $philosopher;
+	margin-bottom: 17px;
+}
+
+h2 {
+	font-size: 30px;
+	font-family: $philosopher;
 }
 
 .btn,
@@ -50,9 +69,250 @@ a {
 }
 
 .container {
-	@include r() {
+	@include r(1200) {
 		padding: 0 20px;
 	}
 
 	margin: 0 auto;
+	max-width: 1160px;
+}
+
+.orange {
+	color: $orange;
+}
+
+.header {
+	position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+	z-index: 1;
+	padding: 26px 0;
+
+	.container {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+	}
+}
+
+.menu {
+	display: flex;
+	align-items: center;
+
+	& > * {
+		margin: 0 18px;
+		position: relative;
+		transition: $trans;
+
+		&:hover {
+			color: #787878;
+
+			.icon {
+				fill: #787878;
+			}
+		}
+	}
+
+	.icon {
+		font-size: 4px;
+		transition: $trans;
+	}
+
+	&__dropdown {
+		cursor: pointer;
+
+		&.active {
+			.icon {
+				transform: rotate(180deg);
+				fill: $orange;
+			}
+
+			span {
+				color: $orange;
+			}
+
+			.menu__content {
+				bottom: -10px;
+				pointer-events: all;
+				user-select: initial;
+				opacity: 1;
+
+				a:hover {
+					color: $orange;
+				}
+			}
+		}
+
+		span {
+			transition: $trans;
+		}
+	}
+
+	&__content {
+		position: absolute;
+		bottom: -50px;
+		left: 50%;
+		transform: translateX(-50%) translateY(100%);
+		background: #FFFEFA;
+		box-shadow: 0px 15px 45px rgba(0, 0, 0, 0.1);
+		border-radius: 10px;
+		padding: 20px 25px;
+		transition: $trans;
+		pointer-events: none;
+		user-select: none;
+		opacity: 0;
+
+		a {
+			display: block;
+			white-space: nowrap;
+			margin-bottom: 10px;
+			font-size: 14px;
+			transition: $trans;
+
+			&:last-child {
+				margin-bottom: 0;
+			}
+		}
+	}
+}
+
+.main {
+	height: 113vh;
+	background: url('../img/main.jpg') no-repeat center;
+	background-size: cover;
+
+	.container {
+		display: flex;
+		justify-content: flex-end;
+		flex-direction: column;
+		height: 100%;
+		color: #fff;
+		padding-bottom: 19.5%;
+		padding-left: 59px;
+	}
+}
+
+.cloud {
+	background: url('../img/cloud.png') no-repeat center;
+	background-size: cover;
+	position: absolute;
+	left: 0;
+	right: 0;
+	padding-bottom: 35%;
+	pointer-events: none;
+	user-select: none;
+
+	&.top {
+		top: 0;
+		transform: translateY(-50%);
+	}
+
+	&.bottom {
+		bottom: 0;
+		transform: translateY(50%);
+	}
+}
+
+.about {
+	background: url('../img/about.jpg') no-repeat center;
+	background-size: cover;
+	position: relative;
+	padding-top: 7%;
+	height: 2000px;
+
+	&__content {
+		margin: 11.5% 26% 0;
+
+		.border {
+			width: 375px;
+			margin-bottom: 30px;
+		}
+
+		a {
+			color: $orange;
+			border-bottom: 1px solid;
+
+			&:hover {
+				border: 0;
+			}
+		}
+
+		h1 {
+			position: relative;
+			margin-bottom: 20px;
+
+			&::before {
+				content: '';
+				position: absolute;
+				top: -36px;
+				left: -134px;
+				width: 120px;
+				height: 71px;
+				background: url('../img/lines.png') no-repeat center;
+				background-size: contain;
+			}
+		}
+
+		p {
+			margin-bottom: 13px;
+		}
+	}
+}
+
+.features {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	position: relative;
+	z-index: 1;
+
+	&__item {
+		display: flex;
+
+		p {
+			strong {
+				font-family: $philosopher;
+				font-size: 24px;
+			}
+		}
+	}
+
+	&__icon {
+		width: 26px;
+		height: 26px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background: linear-gradient(152.38deg, #FCBF30 14.59%, #FF8730 85.9%);
+		box-shadow: 0px 5px 35px rgba(255, 193, 32, 0.5);
+		border-radius: 50%;
+		position: relative;
+		margin-right: 16px;
+
+		&::before {
+			content: '';
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			width: 31px;
+			height: 31px;
+			border-radius: 50%;
+			border: 0.5px solid #F16F13;
+		}
+
+		.icon {
+			fill: #fff;
+			font-size: 7px;
+			opacity: 0.5;
+		}
+	}
+}
+
+.border {
+	border: 1px solid rgba(255, 135, 48, 0.5);
+	border-radius: 10px;
+	padding: 12px 15px;
 }
