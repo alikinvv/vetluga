@@ -12,8 +12,211 @@
     </div>
 </footer>
 
+<div class="backdrop">
+    <div class="modal" data-modal="book">
+        <div class="modal__close"></div>
+        <div class="modal__content">
+            <div class="modal__close"></div>
+            <div class="modal__header">
+                <h2 class="modal__title">Забронировать дом</h2>
+            </div>
+            <div class="modal__body">
+               <div><strong>Выберите дом для проживания</strong></div>
+               <div class="flex">
+                   <div data-modal="aist">
+                       <div class="photo" style="background-image: url('img/book1.jpg');"><div class="sale__icon"><svg class="icon"><use xlink:href="img/symbol-defs.svg#icon-info"></use></svg></div></div>
+                       <div class="info">
+                           <h3 class="name">Дом Аиста</h3>
+                           <div class="price">2000 ₽ / сутки</div>
+                       </div>
+                   </div>
+                   <div data-modal="aist">
+                        <div class="photo" style="background-image: url('img/book2.jpg');"><div class="sale__icon"><svg class="icon"><use xlink:href="img/symbol-defs.svg#icon-info"></use></svg></div></div>
+                        <div class="info">
+                            <h3 class="name">Дом Ильича</h3>
+                            <div class="price">2500 ₽ / сутки</div>
+                        </div>
+                    </div>
+               </div>
+
+               <span>* Минимальный срок аренды — 2 дня <br>
+                Для всех домов действуют общие <a href="javascript:void(0)">Правила проживания</a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" data-modal="aist">
+        <div class="modal__close"></div>
+        <div class="modal__content">
+            <div class="modal__close"></div>
+            <div class="modal__header left">
+                <h2 class="modal__title">Забронировать дом <span class="orange">Аиста</span> <a href="javascript:void(0)" data-modal="book">выбрать <br> другой</a></h2>
+            </div>
+            <div class="modal__body">
+                <div class="modal__row">
+                   <div class="modal__col">
+                        <label>Заезд</label>
+                        <div class="form-group">
+                            <input type="text" name="date">
+                            <svg class="icon"><use xlink:href="img/symbol-defs.svg#icon-calendar"></use></svg>
+                        </div>
+                   </div>
+                    <div class="modal__col">
+                        <label>Выезд</label>
+                        <div class="form-group">
+                            <input type="text" name="date">
+                            <svg class="icon"><use xlink:href="img/symbol-defs.svg#icon-calendar"></use></svg>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal__row">
+                    <div class="modal__col">
+                        <label>Количество гостей</label>
+                        <div class="form-group">
+                            <div class="minus">-</div>
+                            <input type="text" class="count" value="2">
+                            <div class="plus">+</div>
+                        </div>
+                    </div>
+                    <div class="modal__col">
+                        <label>Домашние животные</label>
+                        <div class="form-group">
+                            <select name="" id="">
+                                <option value="">Нет</option>
+                                <option value="">Есть</option>
+                            </select>
+                            <svg class="icon"><use xlink:href="img/symbol-defs.svg#icon-dropdown"></use></svg>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="divider"></div>
+
+                <div class="modal__col">
+                    <label>Данные арендатора</label>
+                    <div class="form-group">
+                        <input type="text" name="name" placeholder="ФИО">
+                    </div>
+                </div>
+
+                <div class="modal__row">
+                    <div class="modal__col">
+                         <div class="form-group">
+                             <input type="text" name="phone">
+                         </div>
+                    </div>
+                     <div class="modal__col">
+                         <div class="form-group">
+                             <input type="text" name="email" placeholder="Email">
+                         </div>
+                     </div>
+                 </div>
+
+                 <div class="modal__row">
+                   <div class="modal__col">
+                        <label>серия и номер паспорта</label>
+                        <div class="form-group">
+                            <input type="text" name="number">
+                            <div class="modal__question">
+                                <svg class="icon"><use xlink:href="img/symbol-defs.svg#icon-question"></use></svg>
+                                <div class="content">В соответствии с пунктом 1 статьи <br> 671 ГК РФ мы обязаны заключить <br> договор между арендатором <br> и арендодателем. <br> 
+                                    Для заключения договора <br> необходимы паспортные данные <br> арендатора</div>
+                            </div>
+                        </div>
+                   </div>
+                    <div class="modal__col">
+                        <label>дата выдачи паспорта</label>
+                        <div class="form-group">
+                            <input type="text" name="passport">
+                            <div class="modal__question">
+                                <svg class="icon"><use xlink:href="img/symbol-defs.svg#icon-question"></use></svg>
+                                <div class="content left">Дата выдачи паспорта указана на <br> первой странице паспорта</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal__col">
+                    <label>Кем выдан</label>
+                    <div class="form-group">
+                        <input type="text" name="name" placeholder="Наименование органа, выдавшего паспорт">
+                        <div class="modal__question">
+                            <svg class="icon"><use xlink:href="img/symbol-defs.svg#icon-question"></use></svg>
+                            <div class="content left">Наименование органа, выдавшего <br> паспорт указано на первой <br> странице паспорта</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal__col">
+                    <div class="form-group">
+                        <input type="checkbox" id="dr">
+                        <label for="dr">Забронировать на День рождения</label>
+                    </div>
+                </div>
+
+                <div class="modal__row hide">
+                    <div class="modal__col">
+                         <label>ВВЕДИТЕ ДАТУ РОЖДЕНИЯ</label>
+                         <div class="form-group">
+                             <input type="text" name="date">
+                             <svg class="icon"><use xlink:href="img/symbol-defs.svg#icon-calendar"></use></svg>
+                         </div>
+                    </div>
+                    <button class="btn">Активировать</button>
+                 </div>
+ 
+                
+                <div class="divider"></div>
+
+                <div class="total">
+                    <div class="days">
+                        <span>Дней проживания</span>
+                        <span>3</span>
+                    </div>
+                    <div class="price">
+                        <span>Итоговая стоимость</span>
+                        <span>7500 ₽</span>
+                    </div>
+                    <div class="modal__col">
+                        <div class="form-group">
+                            <input type="checkbox" id="deal">
+                            <label for="deal">Соглашаюсь с <a href="javascript:void(0)">Публичным договором, Политикой конфиденциальности и Правилами проживания</a></label>
+                        </div>
+                    </div>
+
+                    <button class="btn">Забронировать</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" data-modal="fish">
+        <div class="modal__close"></div>
+        <div class="modal__content">
+            <div class="modal__close"></div>
+            <div class="modal__body">
+                <div class="modal__slider">
+                    <div class="swiper-container">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide"style="background-image: url(img/fish.jpg);"></div>
+                            <div class="swiper-slide"style="background-image: url(img/fish2.jpg);"></div>
+                            <div class="swiper-slide"style="background-image: url(img/fish.jpg);"></div>
+                        </div>
+                    </div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script src="js/jquery.mask.min.js"></script>
 <script src="js/main.js"></script>
 </body>
 </html>
