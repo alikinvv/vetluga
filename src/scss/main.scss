@@ -13,6 +13,10 @@ $philosopher: 'Philosopher', sans-serif;
 }
 
 body {
+	@include r(767) {
+		font-size: 14px;
+	}
+
 	color: #44342B;
 	font-size: 16px;
 	font-family: 'Inter', sans-serif;
@@ -38,17 +42,41 @@ ul {
 }
 
 h1 {
+	@include r(1279) {
+		font-size: 36px;
+	}
+
+	@include r(767) {
+		font-size: 30px;
+	}
+
 	font-size: 40px;
 	font-family: $philosopher;
 	margin-bottom: 17px;
 }
 
 h2 {
+	@include r(1279) {
+		font-size: 26px;
+	}
+
+	@include r(767) {
+		font-size: 20px;
+	}
+
 	font-size: 30px;
 	font-family: $philosopher;
 }
 
 h3 {
+	@include r(1279) {
+		font-size: 21px;
+	}
+
+	@include r(767) {
+		font-size: 18px;
+	}
+
 	font-size: 24px;
 	font-family: $philosopher;
 }
@@ -94,6 +122,10 @@ input[type="checkbox"] {
 	}
 
 	& + label {
+		@include r(767) {
+			font-size: 14px;
+		}
+
 		position: relative;
 		color: #8A95A1;
 		font-weight: normal;
@@ -153,6 +185,10 @@ input[type="checkbox"] {
 }
 
 .header {
+	@include r(767) {
+		z-index: 5;
+	}
+
 	position: absolute;
     top: 0;
     left: 0;
@@ -161,26 +197,177 @@ input[type="checkbox"] {
 	padding: 26px 0;
 
 	.container {
+		@include r(767) {
+			display: block;
+		}
+
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
 	}
+
+	h2 {
+		@include r(767) {
+			font-size: 18px;
+		}
+	}
 }
 
+.hamburger {
+	@include r(767) {
+		flex-shrink: 0;
+		width: 22px;
+		height: 22px;
+		margin-right: 10px;
+	}
+
+	width: 38px;
+	height: 28px;
+	position: absolute;
+	cursor: pointer;
+	margin-right: 2vw;
+	right: 20px;
+	top: 25px;
+	z-index: 11;
+
+	&.active,
+	&.active:hover {
+		position: fixed;
+		span {
+			background: transparent;
+
+			&::before {
+				top: 0;
+				transform: rotate(45deg);
+				transition: top .2s ease-in-out, transform .2s ease-in-out .2s;
+			}
+
+			&::after {
+				bottom: 0;
+				transform: rotate(-45deg);
+				transition: bottom .2s ease-in-out, transform .2s ease-in-out .2s;
+			}
+		}
+	}
+
+	&:hover span {
+		&::before {
+			top: -8px;
+		}
+
+		&::after {
+			bottom: -8px;
+		}
+	}
+
+	span {
+		@include r(767) {
+			height: 2px;
+		}
+
+		width: 100%;
+		height: 2px;
+		background: #2F3C3C;
+		position: absolute;
+		top: 12px;
+		transition: background .2s ease-in-out .1s;
+		pointer-events: none;
+		user-select: none;
+
+		&::before,
+		&::after {
+			content: '';
+			position: absolute;
+			width: 100%;
+			height: 2px;
+			background: #2F3C3C;
+			left: 0;
+		}
+
+		&::before {
+			top: -8px;
+			transition: top .2s ease-in-out .2s, transform .2s ease-in-out;
+		}
+
+		&::after {
+			bottom: -8px;
+			transition: bottom .2s ease-in-out .2s, transform .2s ease-in-out;
+		}
+	}
+}
+
+
 .menu {
+	@include r(767) {
+		display: none;
+	}
+
 	display: flex;
 	align-items: center;
 
+	&.active {
+		position: fixed;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		background: #fff;
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		z-index: 10;
+		height: 100%;
+		width: 100%;
+		padding-top: 15%;
+	}
+
+	.mobile {
+		margin: auto 0 0;
+		padding: 18px;
+		width: 100%;
+
+		.phones {
+			a {
+				display: block;
+				color: $orange;
+				font-size: 16px;
+				margin-bottom: 15px;
+			}
+		}
+
+		.btn {
+			text-align: center;
+			width: 100%;
+		}
+	}
+
 	& > * {
+		@include r(767) {
+			font-size: 18px;
+			margin-bottom: 15px;
+		}
+
+		@include r(374) {
+			font-size: 16px;
+		}
+
 		margin: 0 18px;
 		position: relative;
 		transition: $trans;
 
 		&:hover {
+			@include r(767) {
+				color: #44342B;
+			}
+
 			color: #787878;
 
 			.icon {
+				@include r(767) {
+					fill: #44342B;
+				}
+
 				fill: #787878;
 			}
 		}
@@ -196,11 +383,19 @@ input[type="checkbox"] {
 
 		&.active {
 			.icon {
+				@include r(767) {
+					fill: #44342B;
+				}
+
 				transform: rotate(180deg);
 				fill: $orange;
 			}
 
 			span {
+				@include r(767) {
+					color: #44342B;
+				}
+
 				color: $orange;
 			}
 
@@ -222,6 +417,16 @@ input[type="checkbox"] {
 	}
 
 	&__content {
+		@include r(767) {
+			position: static;
+			display: none;
+			transform: none;
+			background: transparent;
+			box-shadow: none;
+			padding: 15px 15px 0;
+			transition: none;
+		}
+
 		position: absolute;
 		bottom: -50px;
 		left: 50%;
@@ -236,6 +441,14 @@ input[type="checkbox"] {
 		opacity: 0;
 
 		a {
+			@include r(767) {
+				font-size: 18px;
+			}
+
+			@include r(374) {
+				font-size: 16px;
+			}
+
 			display: block;
 			white-space: nowrap;
 			margin-bottom: 10px;
@@ -250,16 +463,51 @@ input[type="checkbox"] {
 }
 
 .main {
+	@include r(1023) {
+		height: 86vh;
+	}
+
 	height: 113vh;
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center;
 
 	&.pravila {
+		@include r(1279) {
+			height: 121vh;
+			background-position: 17% 50%;
+		}
+
+		@include r(1023) {
+			height: 100vh;
+			background-position: 17% 50%;
+		}
+		
+		@include r(767) {
+			height: 116vh;
+		}
+
 		height: 150vh;
 	}
 
 	.container {
+		@include r(1279) {
+			padding-bottom: 25%;
+		}
+
+		@include r(1023) {
+			padding-bottom: 40%;
+		}
+
+		@include r(767) {
+			padding-left: 20px;
+			padding-bottom: 30%;
+
+			h1 br {
+				display: none;
+			}
+		}
+
 		display: flex;
 		justify-content: flex-end;
 		flex-direction: column;
@@ -276,6 +524,10 @@ input[type="checkbox"] {
 }
 
 .cloud {
+	@include r(767) {
+		padding-bottom: 72%;
+	}
+
 	background: url('../img/cloud.png') no-repeat center;
 	background-size: cover;
 	position: absolute;
@@ -318,6 +570,20 @@ input[type="checkbox"] {
 }
 
 .about {
+	@include r(1279) {
+		height: 1630px;
+	}
+
+	@include r(1023) {
+		height: 1407px;
+	}
+
+	@include r(767) {
+		background: url('../img/about-mobile.jpg') no-repeat 50% 370px;
+		background-size: cover;
+		height: 1767px;
+	}
+
 	background: url('../img/about.jpg') no-repeat center;
 	background-size: cover;
 	position: relative;
@@ -325,6 +591,10 @@ input[type="checkbox"] {
 	height: 2000px;
 
 	.container {
+		@include r(767) {
+			padding-bottom: 29%;
+		}
+
 		height: 100%;
 		position: relative;
 		display: flex;
@@ -334,9 +604,22 @@ input[type="checkbox"] {
 	}
 
 	&__content {
+		@include r(1023) {
+			margin: 11.5% 0 0;
+		}
+
+		@include r(767) {
+			margin: 25.5% 0 0;
+		}
+
 		margin: 11.5% 26% 0;
 
 		.border {
+			@include r(767) {
+				width: 100%;
+				margin-top: 30px;
+			}
+
 			width: 375px;
 			margin-bottom: 30px;
 		}
@@ -369,6 +652,12 @@ input[type="checkbox"] {
 	position: relative;
 
 	&::before {
+		@include r(767) {
+			left: 0;
+			width: 85px;
+			top: -70px;
+		}
+
 		content: '';
 		position: absolute;
 		top: -36px;
@@ -381,6 +670,10 @@ input[type="checkbox"] {
 }
 
 .features {
+	@include r(1023) {
+		display: block;
+	}
+
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -388,10 +681,30 @@ input[type="checkbox"] {
 	z-index: 1;
 
 	&__item {
+		@include r(767) {
+			margin-bottom: 20px;
+		}
+
 		display: flex;
 
 		p {
+			@include r(1023) {
+				br {
+					display: none;
+				}
+			}
+
 			strong {
+				@include r(1023) {
+					br {
+						display: none;
+					}
+				}
+
+				@include r(767) {
+					font-size: 20px;
+				}
+
 				font-family: $philosopher;
 				font-size: 24px;
 			}
@@ -444,18 +757,56 @@ input[type="checkbox"] {
 	position: relative;
 
 	&.aist {
+		@include r(1279) {
+			height: 2480px;
+		}
+
+		@include r(1023) {
+			height: 2300px;
+		}
+
+		@include r(767) {
+			height: 2755px;
+		}
+
 		height: 2950px;
 	}
 
 	&.ilich {
+		@include r(1023) {
+			height: 1900px;
+		}
+
+		@include r(767) {
+			background-position: 10% 50%;
+			height: 2250px;
+		}
+
 		height: 1567px;
 
 		.container {
+			@include r(1279) {
+				padding-bottom: 28%;
+			}
+
+			@include r(1023) {
+				padding-bottom: 32%;
+			}
+
+			@include r(1023) {
+				padding-bottom: 57%;
+			}
+
 			padding-bottom: 20%;
 		}
 	}
 
 	.container {
+		@include r(767) {
+			z-index: 1;
+			position: relative;
+		}
+
 		height: 100%;
 		padding-top: 16%;
 		padding-bottom: 33%;
@@ -464,24 +815,63 @@ input[type="checkbox"] {
 		justify-content: space-between;
 
 		.bottom {
+			@include r(1279) {
+				padding: 0 40px;
+			}
+
+			@include r(1023) {
+				order: 0;
+				margin-top: 60px;
+			}
+
+			@include r(767) {
+				padding: 0;
+			}
+
 			padding: 0 8.4%;
 		}
 	}
 
 	.btn {
+		@include r(767) {
+			text-align: center;
+			width: 100%;
+		}
+
 		margin-bottom: 39px;
 	}
 
 	&__desc {
+		@include r(1023) {
+			br {
+				display: none;
+			}
+		}
+
 		line-height: 1.2;
 		margin-bottom: 32px;
 	}
 
 	&__features {
+		@include r(1023) {
+			flex-direction: column;
+			align-items: flex-start;
+		}
+
 		display: flex;
 		align-items: flex-end;
 
 		.border {
+			@include r(1023) {
+				margin-bottom: 40px;
+				margin-right: 0;
+				margin-left: 0;
+			}
+
+			@include r(767) {
+				width: 100%;
+			}
+
 			width: 315px;
 			margin-right: 90px;
 			flex-shrink: 0;
@@ -518,21 +908,39 @@ input[type="checkbox"] {
 		margin-top: 17%;
 
 		p {
+			@include r(767) {
+				margin: 0 7%;
+			}
+
 			margin: 0;
 			font-family: $philosopher;
 		}
 	}
 
 	&__item {
+		@include r(1023) {
+			display: block;
+		}
+
 		color: #fff;
 		display: flex;
 
 		.left {
+			@include r(1023) {
+				width: 100%;
+				margin: 0 0 60px;
+			}
+
 			width: 38%;
 			margin-right: 115px;
 		}
 
 		.right {
+			@include r(1023) {
+				width: 100%;
+				padding: 0;
+			}
+
 			width: 70%;
 			padding-top: 66px;
 		}
@@ -541,12 +949,21 @@ input[type="checkbox"] {
 			border-radius: 10px;
 
 			.swiper-slide {
+				@include r(1023) {
+					height: 430px;
+				}
+
+				@include r(767) {
+					height: 215px;
+				}
+
 				width: 362px;
 				height: 208px;
 				background-size: cover;
 				background-position: center;
 				background-repeat: no-repeat;
 				cursor: pointer;
+				border-radius: 10px;
 			}
 		}
 	}
@@ -556,6 +973,10 @@ input[type="checkbox"] {
 	}
 
 	&__floor {
+		@include r(767) {
+			padding: 10px 15px;
+		}
+
 		padding: 18px 28px;
 		background: rgba(255, 255, 255, 0.01);
 		border: 1px solid #FFFFFF;
@@ -605,6 +1026,10 @@ input[type="checkbox"] {
 	}
 
 	&-next {
+		@include r(767) {
+			right: -15px;
+		}
+
 		right: -40px;
 
 		&::before {
@@ -617,6 +1042,10 @@ input[type="checkbox"] {
 	}
 
 	&-prev {
+		@include r(767) {
+			left: -15px;
+		}
+
 		left: -40px;
 
 		&::before {
@@ -673,12 +1102,25 @@ input[type="checkbox"] {
 	position: relative;
 
 	.container {
+		@include r(1023) {
+			position: relative;
+			z-index: 2;
+		}
+
+		@include r(767) {
+			padding-top: 60%;
+		}
+
 		height: 100%;
 		padding-top: 22%;
 		padding-bottom: 22%;
 	}
 
 	&__row {
+		@include r(767) {
+			display: block;
+		}
+
 		display: flex;
 		justify-content: space-between;
 		margin-bottom: 40px;
@@ -688,6 +1130,11 @@ input[type="checkbox"] {
 		}
 
 		& > div {
+			@include r(767) {
+				width: 100%;
+				margin: 0 0 40px !important;
+			}
+
 			width: 50%;
 
 			&:first-child {
@@ -701,6 +1148,10 @@ input[type="checkbox"] {
 	}
 
 	&__item {
+		@include r(1023) {
+			padding: 37px 21px;
+		}
+
 		border: 1px solid rgba(255, 255, 255, 0.5);
 		border-radius: 10px;
 		padding: 49px 54px;
@@ -736,11 +1187,33 @@ input[type="checkbox"] {
 }
 
 .book {
+	@include r(1279) {
+		padding: 0 20px;
+	}
+
 	position: relative;
 	z-index: 2;
 	background: #fff;
 	
 	.container {
+		@include r(1023) {
+			padding: 23px;
+			display: block;
+			text-align: center;
+		}
+
+		@include r(767) {
+			text-align: left;
+			padding: 18px;
+
+			.btn {
+				padding-left: 0;
+				padding-right: 0;
+				text-align: center;
+				width: 100%;
+			}
+		}
+
 		border: 1px solid rgba(255, 135, 48, 0.5);
 		border-radius: 10px;
 		display: flex;
@@ -749,12 +1222,26 @@ input[type="checkbox"] {
 		padding: 43px 49px;
 
 		h2 {
+			@include r(1023) {
+				margin-bottom: 20px;
+			}
+
+			@include r(767) {
+				br {
+					display: none;
+				}
+			}
+
 			margin-bottom: 0;
 		}
 	}
 }
 
 .sale {
+	@include r(767) {
+		padding-bottom: 0;
+	}
+
 	position: relative;
 	z-index: 2;
 	padding: 114px 0;
@@ -765,12 +1252,29 @@ input[type="checkbox"] {
 	}
 
 	.flex {
+		@include r(767) {
+			display: block;
+			margin: 0;
+		}
+
 		display: flex;
 		justify-content: space-between;
 		margin: 0 -20px;
 	}
 
 	&__item {
+		@include r(1023) {
+			margin: 0 10px;
+
+			div br {
+				display: none;
+			}
+		}
+
+		@include r(767) {
+			margin: 0 0 60px;
+		}
+
 		width: 100%;
 		margin: 0 20px;
 		cursor: pointer;
@@ -783,6 +1287,15 @@ input[type="checkbox"] {
 	}
 
 	&__photo {
+		@include r(1023) {
+			height: 140px;
+		}
+
+		@include r(767) {
+			height: 0;
+			padding-bottom: 66%;
+		}
+
 		width: 100%;
 		height: 239px;
 		background-size: cover;
@@ -795,8 +1308,13 @@ input[type="checkbox"] {
 	}
 
 	strong {
+		@include r(767) {
+			font-size: 20px;
+		}
+
 		display: block;
 		margin-bottom: 11px;
+		font-family: $philosopher;
 	}
 
 	&__icon {
@@ -864,33 +1382,74 @@ input[type="checkbox"] {
 	}
 
 	.flex {
+		@include r(1023) {
+			margin: 0 -10px;
+		}
+
 		display: flex;
 		flex-wrap: wrap;
 		margin: 0 -20px;
 	}
 
 	&__item {
+		@include r(1279) {
+			height: 0;
+			padding-bottom: 21%;
+		}
+
+		@include r(1023) {
+			margin: 10px;
+			width: calc(25% - 20px);
+		}
+
+		@include r(767) {
+			width: calc(50% - 20px);
+			padding-bottom: 44%;
+		}
+
 		width: calc(25% - 40px);
-		margin: 20px 20px;
+		margin: 20px;
 		height: 260px;
 		background-repeat: no-repeat;
 		background-size: cover;
 		background-position: center;
+		border-radius: 10px;
 	}
 }
 
 .contacts {
 	position: relative;
 	padding-top: 6%;
-    padding-bottom: 4%;
+	padding-bottom: 4%;
+	
+	.addr {
+		@include r(1023) {
+			br {
+				display: none;
+			}
+		}
+	}
 
 	.container {
+		@include r(767) {
+			display: block;
+		}
+
 		display: flex;
 		justify-content: space-between;
 		position: relative;
 		z-index: 2;
 
 		& > div {
+			@include r(767) {
+				width: 100%;
+				margin-bottom: 60px;
+
+				&:last-child {
+					margin-bottom: 0;
+				}
+			}
+
 			width: 50%;
 		}
 	}
@@ -917,6 +1476,11 @@ input[type="checkbox"] {
 }
 
 .map {
+	@include r(767) {
+		height: 590px;
+		background-position: 41% 50%;
+	}
+
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center;
@@ -926,15 +1490,33 @@ input[type="checkbox"] {
 		height: auto;
 		position: relative;
 		z-index: 2;
+		
+		iframe {
+			@include r(767) {
+				height: 300px;
+			}
+		}
 	}
 }
 
 .footer {
+	@include r(767) {
+		margin-top: 0;
+	}
+
 	padding: 5% 0 40px;
 	position: relative;
 	margin-top: 26px;
 
 	.container {
+		@include r(767) {
+			display: block;
+
+			div {
+				margin-bottom: 30px;
+			}
+		}
+
 		display: flex;
 		justify-content: space-between;
 		align-items: flex-start;
@@ -993,7 +1575,8 @@ input[type="checkbox"] {
 	max-height: 90vh;
     overflow-y: scroll;
 	-ms-overflow-style: none;  /* IE and Edge */
-  	scrollbar-width: none;  /* Firefox */
+	  scrollbar-width: none;  /* Firefox */
+	  -webkit-overflow-scrolling: touch;
 
 	&::-webkit-scrollbar {
 		display: none;
@@ -1018,10 +1601,19 @@ input[type="checkbox"] {
 		}
 
 		.flex {
+			@include r(767) {
+				display: block;
+			}
+
 			display: flex;
 			justify-content: space-between;
 
 			& > div {
+				@include r(767) {
+					width: 100%;
+					margin-bottom: 20px !important;
+				}
+
 				width: 50%;
 				cursor: pointer;
 				position: relative;
@@ -1051,10 +1643,18 @@ input[type="checkbox"] {
 				}
 
 				&:first-child {
+					@include r(767) {
+						margin: 0;
+					}
+
 					margin-right: 10px;
 				}
 
 				&:last-child {
+					@include r(767) {
+						margin: 0;
+					}
+
 					margin-left: 10px;
 				}
 			}
@@ -1107,6 +1707,12 @@ input[type="checkbox"] {
 	}
 
 	&[data-modal="aist"] {
+		h2 {
+			@include r(767) {
+				margin-right: 32%;
+			}
+		}
+
 		.total {
 			.days {
 				display: flex;
@@ -1121,7 +1727,7 @@ input[type="checkbox"] {
 				}
 			}
 
-			.price {
+			.price {		
 				display: flex;
 				align-items: center;
 				justify-content: space-between;
@@ -1154,6 +1760,11 @@ input[type="checkbox"] {
 	}
 
 	&__header {
+		@include r(767) {
+			padding-left: 20px;
+			padding-right: 20px;
+		}
+
 		padding: 40px 60px 0;
 		text-align: center;
 		font-family: $philosopher;
@@ -1187,6 +1798,11 @@ input[type="checkbox"] {
 	}
 
 	&__row {
+		@include r(767) {
+			display: block;
+			margin-bottom: 0;
+		}
+
 		display: flex;
 		justify-content: space-between;
 		margin-bottom: 20px;
@@ -1204,14 +1820,27 @@ input[type="checkbox"] {
 		}
 
 		.modal__col {
+			@include r(767) {
+				width: 100%;
+				margin-bottom: 20px !important;
+			}
+
 			width: 50%;
 			margin-bottom: 0;
 	
 			&:first-child {
+				@include r(767) {
+					margin: 0;
+				}
+
 				margin-right: 10px;
 			}
 	
 			&:last-child {
+				@include r(767) {
+					margin: 0;
+				}
+
 				margin-left: 10px;
 			}
 		}
@@ -1334,6 +1963,10 @@ input[type="checkbox"] {
 	}
 	
 	&__body {
+		@include r(767) {
+			padding: 25px 20px 50px;	
+		}
+
 		padding: 25px 50px 50px;
 
 		p {
@@ -1428,6 +2061,10 @@ input[type="checkbox"] {
 		padding-top: 5%;
 
 		h1 {
+			@include r(767) {
+				white-space: normal;
+			}
+
 			text-align: center;
 			margin-bottom: 65px;
 			white-space: nowrap;

@@ -1,6 +1,10 @@
 $('body').on('click', '.menu__dropdown span', (e) => {
-    $('.menu__dropdown').not($(e.currentTarget).parent()).removeClass('active');
-    $(e.currentTarget).parent().toggleClass('active');
+    if ($(window).width() <= 767) {
+        $(e.currentTarget).parent().toggleClass('active').find('.menu__content').slideToggle();
+    } else {
+        $('.menu__dropdown').not($(e.currentTarget).parent()).removeClass('active');
+        $(e.currentTarget).parent().toggleClass('active');
+    }
 });
 
 let aist = new Swiper('.aist .swiper-container', {
@@ -88,3 +92,25 @@ $('body').on('change', '#dr', (e) => {
 });
 
 $('.modal').addClass('init');
+
+let initMobileMenu = () => {
+    if ($(window).width() <= 767 && $('.hamburger').length === 0) {
+        $('.header .container').append('<div class="hamburger"><span></span></div>');
+        $('.menu').append('<div class="mobile"><div class="phones"><a href="tel:+79307191757">+7 930 719 17 57</a><a href="tel:+79601828406">+7 960 182 84 06</a></div> <a href="javascript:void(0)" class="btn">Забронировать</a></div>')
+    } else if ($(window).width() > 767  && $('.hamburger').length > 0) {
+        $('.hamburger').remove();
+    }
+}
+
+initMobileMenu();
+$(window).on('resize', initMobileMenu);
+
+$('body').on('click', '.hamburger', (e) => {
+    $(e.currentTarget).toggleClass('active');
+    $('.menu').toggleClass('active');
+});
+
+$('body').on('click', '.close-menu', () => {
+    $('.hamburger').toggleClass('active');
+    $('.menu').removeClass('active');
+});
