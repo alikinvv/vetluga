@@ -549,10 +549,12 @@ input[type="checkbox"] {
 	}
 
 	&.content {
+		background: url('../img/services.png') no-repeat center;
+		background-size: cover;
 		display: flex;
 		align-items: center;
 		padding: 0;
-		height: 575px;
+		height: 1095px;
 
 		div {
 			width: 100%;
@@ -570,27 +572,27 @@ input[type="checkbox"] {
 }
 
 .about {
-	@include r(1279) {
-		height: 1630px;
-	}
-
-	@include r(1023) {
-		height: 1407px;
-	}
-
 	@include r(767) {
 		background: url('../img/about-mobile.jpg') no-repeat 50% 370px;
 		background-size: cover;
-		height: 1767px;
+		height: 250vh !important;
 	}
 
 	background: url('../img/about.jpg') no-repeat center;
 	background-size: cover;
 	position: relative;
 	padding-top: 7%;
-	height: 2000px;
+	height: 251vh;
 
 	.container {
+		@include r(1700) {
+			padding-bottom: 32%;
+		}
+
+		@include r(1365) {
+			padding-bottom: 43%;
+		}
+
 		@include r(767) {
 			padding-bottom: 29%;
 		}
@@ -774,30 +776,38 @@ input[type="checkbox"] {
 
 	&.ilich {
 		@include r(1023) {
-			height: 1900px;
+			height: 284vh;
 		}
 
 		@include r(767) {
 			background-position: 10% 50%;
-			height: 2250px;
+			height: 377vh !important;
 		}
 
-		height: 1567px;
+		height: 210vh;
 
 		.container {
-			@include r(1279) {
-				padding-bottom: 28%;
-			}
-
-			@include r(1023) {
+			@include r(1599) {
 				padding-bottom: 32%;
 			}
 
-			@include r(1023) {
-				padding-bottom: 57%;
+			@include r(1365) {
+				padding-bottom: 39%;
 			}
 
-			padding-bottom: 20%;
+			@include r(1279) {
+				padding-bottom: 52%;
+			}
+
+			@include r(1023) {
+				padding-bottom: 69%;
+			}
+
+			@include r(767) {
+				padding-bottom: 113%;
+			}
+
+			padding-bottom: 30%;
 		}
 	}
 
@@ -1103,17 +1113,18 @@ input[type="checkbox"] {
 
 	.container {
 		@include r(1023) {
-			position: relative;
-			z-index: 2;
-		}
-
-		@include r(767) {
 			padding-top: 60%;
 		}
 
+		@include r(767) {
+			padding-top: 111%;
+		}
+
 		height: 100%;
-		padding-top: 22%;
+		padding-top: 29%;
 		padding-bottom: 22%;
+		z-index: 2;
+		position: relative;
 	}
 
 	&__row {
@@ -2079,3 +2090,56 @@ input[type="checkbox"] {
 		}
 	}
 }
+
+@media screen and (min-height: 1024px) and (min-width: 768px) {
+	.about {
+		height: 223vh;
+	}
+} 
+
+@media screen and (min-height: 768px) and (max-width: 1024px) {
+	.house.ilich {
+		height: 284vh !important;
+	}
+} 
+
+@media screen and (max-height: 863px) {
+	.about {
+		height: 290vh;
+	}
+
+	.house.ilich {
+		height: 247vh;
+	}
+} 
+
+@media screen and (max-height: 750px) {
+	.about {
+		height: 335vh;
+	}
+
+	.house.ilich {
+		height: 285vh;
+	}
+} 
+
+@media screen and (max-height: 650px) {
+	.about {
+		height: 393vh;
+	}
+
+	.house.ilich {
+		height: 335vh;
+	}
+} 
+
+@media screen and (max-height: 550px) {
+	.about {
+		height: 455vh;
+	}
+
+	.house.ilich {
+		height: 407vh;
+	}
+} 
+
